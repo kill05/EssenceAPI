@@ -119,10 +119,9 @@ public class ItemBuilder implements IItemBuilder {
 
     @Override
     public ItemBuilder setHeadTexture(String texture, String signature) {
-        ItemStack head = new ItemStack(Material.SKULL_ITEM);
         if(texture == null || texture.isEmpty()) return this;
 
-        SkullMeta headMeta = (SkullMeta) head.getItemMeta();
+        SkullMeta headMeta = (SkullMeta) meta;
         GameProfile profile = new GameProfile(UUID.randomUUID(), null);
         profile.getProperties().put("textures", new Property("textures", texture, signature));
 
@@ -132,7 +131,6 @@ public class ItemBuilder implements IItemBuilder {
             throw new IllegalStateException("Failed to modify head meta.", e);
         }
 
-        head.setItemMeta(headMeta);
         return this;
     }
 

@@ -4,7 +4,7 @@ import com.github.kill05.essenceapi.core.modules.packets.PacketModule;
 import io.netty.channel.Channel;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.protocol.Packet;
-import org.apache.commons.lang3.reflect.FieldUtils;
+import org.apache.commons.lang.reflect.FieldUtils;
 import org.bukkit.craftbukkit.v1_19_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 

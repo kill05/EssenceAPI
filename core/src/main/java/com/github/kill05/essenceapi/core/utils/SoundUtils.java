@@ -25,7 +25,7 @@ public final class SoundUtils {
         }
     }
 
-    public static void playSound(Location loc, Sound sound, float volume, float pitch){
+    public static void playSound(Sound sound, float volume, float pitch, Location loc) {
         loc.getWorld().playSound(loc, sound, volume, pitch);
     }
 

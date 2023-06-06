@@ -263,8 +263,16 @@ public class EssenceGui {
             return this;
         }
 
+
         public Builder setRow(int row, ItemStack item) {
-            return setItems(row * 9, row * 9 + 8, item);
+            return setRow(row, 0, 8, item);
+        }
+
+        public Builder setRow(int row, int start, int end, ItemStack item) {
+            if(start < 0) throw new IllegalArgumentException(String.format("Start can't be smaller than 0! (start: %s)", start));
+            if(end > 8) throw new IllegalArgumentException(String.format("End can't be bigger than 8! (end: %s)", end));
+            if(start > end) throw new IllegalArgumentException(String.format("Start can't be bigger than end! (start: %s, end: %s).", start, end));
+            return setItems(row * 9 + start, row * 9 + end, item);
         }
 
         public Builder setColumn(int column, ItemStack item) {

@@ -16,12 +16,11 @@ public final class SoundUtils {
         playSound(sound, volume, pitch, new Entity[]{entity});
     }
 
-    public static void playSound(Sound sound, float volume, float pitch, Entity... entities){
-        for(Entity entity : entities){
-            if (entity instanceof Player) {
-                Player player = (Player) entity;
-                player.playSound(player.getLocation(), sound, volume, pitch);
-            }
+    public static void playSound(Sound sound, float volume, float pitch, Entity... entities) {
+        for(Entity entity : entities) {
+            if (!(entity instanceof Player)) continue;
+            Player player = (Player) entity;
+            player.playSound(player.getLocation(), sound, volume, pitch);
         }
     }
 

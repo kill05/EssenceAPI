@@ -4,6 +4,7 @@ import com.github.kill05.essenceapi.core.utils.EssenceUtils;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import org.apache.commons.lang.NotImplementedException;
+import org.apache.commons.lang3.EnumUtils;
 import org.apache.commons.lang3.reflect.FieldUtils;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -43,6 +44,14 @@ public class ItemBuilder implements IItemBuilder {
 
     public static ItemBuilder namedItem(Material material, String name) {
         return new ItemBuilder(material).setName(name);
+    }
+
+    public static ItemBuilder headItem(String texture) {
+        Material material = EnumUtils.getEnum(Material.class, "PLAYER_HEAD", EnumUtils.getEnum(Material.class, "SKULL_ITEM"));
+        ItemBuilder builder = new ItemBuilder(material);
+        if(material.name().equals("SKULL_ITEM")) builder.setDurability((short) 3);
+
+        return builder.setHeadTexture(texture, null);
     }
 
 

@@ -320,8 +320,8 @@ public class EssenceGui {
             return gui;
         }
 
-        public void open(Player player) {
-            gui.open(player);
+        public void buildAndOpen(Player player) {
+            build().open(player);
         }
 
     }

@@ -36,6 +36,16 @@ public class ItemBuilder implements IItemBuilder {
     }
 
 
+
+    public static ItemBuilder namedItem(Material material, int amount, String name) {
+        return new ItemBuilder(material, amount).setName(name);
+    }
+
+    public static ItemBuilder namedItem(Material material, String name) {
+        return new ItemBuilder(material).setName(name);
+    }
+
+
     @Override
     public ItemBuilder setDurability(short durability) {
         item.setDurability(durability);

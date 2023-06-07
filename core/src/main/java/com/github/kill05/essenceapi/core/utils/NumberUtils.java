@@ -1,6 +1,7 @@
 package com.github.kill05.essenceapi.core.utils;
 
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 import java.util.Random;
 import java.util.stream.IntStream;
@@ -67,13 +68,13 @@ public final class NumberUtils {
         return roman.toString();
     }
 
-    public static String symbolFormat(double value) {
+    public static String letterFormat(double value) {
         int index = 0;
         while ((value / 1000) >= 1) {
             value = value / 1000;
             index++;
         }
-        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        DecimalFormat decimalFormat = new DecimalFormat("#.##", DecimalFormatSymbols.getInstance(Locale.US));
         return String.format("%s%s", decimalFormat.format(value), numberLiterals[index]);
     }
 

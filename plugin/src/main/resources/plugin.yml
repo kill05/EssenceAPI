@@ -1,0 +1,6 @@
+name: '${project.name}'
+version: '${project.version}'
+main: com.github.kill05.essenceapi.plugin.EssencePlugin
+authors: [ kill05 ]
+description: A Spigot library.
+api-version: 1.13

@@ -14,7 +14,7 @@
         <module>plugin</module>
         <module>craftbukkit_1_8_R3</module>
         <module>craftbukkit_1_19_R3</module>
-        <module>craftbukkit_1_20_R1</module>
+        <module>craftbukkit_1_20_R3</module>
     </modules>
 
     <properties>

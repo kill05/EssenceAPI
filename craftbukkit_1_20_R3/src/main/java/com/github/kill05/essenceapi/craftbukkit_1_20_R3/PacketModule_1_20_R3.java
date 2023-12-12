@@ -1,4 +1,4 @@
-package com.github.kill05.essenceapi.craftbukkit_1_20_R1;
+package com.github.kill05.essenceapi.craftbukkit_1_20_R3;
 
 import com.github.kill05.essenceapi.core.modules.packets.PacketModule;
 import io.netty.channel.Channel;
@@ -8,7 +8,7 @@ import org.apache.commons.lang.reflect.FieldUtils;
 import org.bukkit.craftbukkit.v1_20_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
-public class PacketModule_1_20_R1 extends PacketModule {
+public class PacketModule_1_20_R3 extends PacketModule {
 
     @SuppressWarnings("rawtypes")
     @Override

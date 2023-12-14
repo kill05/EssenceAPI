@@ -20,10 +20,11 @@ public class PacketModule_1_20_R3 extends PacketModule {
     @Override
     public Channel getChannel(Player player) {
         try {
-            NetworkManager netManager = (NetworkManager) FieldUtils.readField(((CraftPlayer) player).getHandle().c, "h", true);
+            NetworkManager netManager = (NetworkManager) FieldUtils.readField(((CraftPlayer) player).getHandle().c, "c", true);
             return netManager.n;
         } catch (IllegalAccessException e) {
             throw new IllegalStateException("Failed to get NetworkManager field. This is a bug!", e);
-        }    }
+        }
+    }
 
 }

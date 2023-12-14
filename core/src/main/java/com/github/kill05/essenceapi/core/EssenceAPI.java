@@ -1,5 +1,6 @@
 package com.github.kill05.essenceapi.core;
 
+import com.github.kill05.essenceapi.core.commands.CommandController;
 import com.github.kill05.essenceapi.core.commands.CommandRegistry;
 import com.github.kill05.essenceapi.core.gui.GuiController;
 import com.github.kill05.essenceapi.core.modules.ModuleLoader;
@@ -21,6 +22,9 @@ public final class EssenceAPI {
     private PacketListener packetListener;
     private CommandRegistry commandRegistry;
     private GuiController guiController;
+
+    @Deprecated
+    private CommandController commandController;
 
     private EssenceAPI() {
 
@@ -58,6 +62,7 @@ public final class EssenceAPI {
 
         //register events
         Arrays.asList(
+                this.commandController = new CommandController(),
                 this.commandRegistry = new CommandRegistry(),
                 this.guiController = new GuiController()
         ).forEach(listener -> Bukkit.getPluginManager().registerEvents(listener, plugin));
@@ -88,23 +93,32 @@ public final class EssenceAPI {
         getPlugin().getLogger().log(level, message);
     }
 
+
+    public static EssenceAPI instance() {
+        checkEnabled();
+        return instance;
+    }
+
     public static JavaPlugin getPlugin() {
-        return instance.plugin;
+        return instance().plugin;
     }
 
     public static PacketListener getPacketListener() {
         checkEnabled(PacketModule.class);
-        return instance.packetListener;
+        return instance().packetListener;
     }
 
-    public static CommandRegistry getCommandController() {
-        checkEnabled();
-        return instance.commandRegistry;
+    @Deprecated
+    public static CommandController getCommandController() {
+        return instance().commandController;
+    }
+
+    public static CommandRegistry getCommandRegistry() {
+        return instance().commandRegistry;
     }
 
     public static GuiController getGuiController() {
-        checkEnabled();
-        return instance.guiController;
+        return instance().guiController;
     }
 
 
@@ -112,9 +126,9 @@ public final class EssenceAPI {
         if(instance == null || !instance.isEnabled()) throw new IllegalStateException("EssenceAPI is not enabled! This is a bug!");
     }
 
-    private static void checkEnabled(Class<?> clazz) {
+    private static void checkEnabled(Class<?> module) {
         checkEnabled();
-        ModuleLoader.checkLoaded(clazz);
+        ModuleLoader.checkLoaded(module);
     }
 
 

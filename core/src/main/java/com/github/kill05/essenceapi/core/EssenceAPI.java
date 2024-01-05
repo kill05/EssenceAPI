@@ -67,7 +67,7 @@ public final class EssenceAPI {
                 this.guiController = new GuiController()
         ).forEach(listener -> Bukkit.getPluginManager().registerEvents(listener, plugin));
 
-        System.out.println("Successfully enabled EssenceAPI!");
+        EssenceAPI.log(Level.INFO, "Successfully enabled EssenceAPI!");
     }
     
     public void disable() {
@@ -130,7 +130,6 @@ public final class EssenceAPI {
         checkEnabled();
         ModuleLoader.checkLoaded(module);
     }
-
 
     public boolean isEnabled() {
         return plugin != null && plugin.isEnabled();
